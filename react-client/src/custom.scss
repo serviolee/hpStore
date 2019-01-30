@@ -7,15 +7,17 @@
 }
 
 .row {
-  border: solid;
+  border: none;
+
 }
 
 .col {
   border: solid blue;
+  text-align: center;
 }
 
-.loginPading {
-  pading: 5%;
+.loginPadding {
+  padding: 5%;
 }
 
 .inputPadding {

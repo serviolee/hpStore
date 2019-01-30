@@ -71,7 +71,7 @@ class List extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         {/*<Navbar />*/}
         <nav>
           <h1>Welcome {this.state.userName}</h1>
@@ -93,14 +93,16 @@ class List extends React.Component {
         </nav>
         <div>
           {preload.data.map(item => (
-            <div key={item.product_id} className="show">
+            <div key={item.product_id} className="container">
+              <div className="row justify-content-center loginPadding">
               <Link to={`/products/${item.product_id}`}>
-                <img className="show-img" alt={`${item.title}`} src={item.media[0].sizes[0].url} width="100"/>
+                <img alt={`${item.title}`} src={item.media[0].sizes[0].url} width="100"/>
               </Link>
-              <div className="show-text">
-                <h3 className="show-title">{item.title}</h3>
-                <h4 className="show-price">${item.price}</h4>
-                <h4 className="show-create">{item.created_at}</h4>
+              <div>
+                <h3 className="col-md-auto">{item.title}</h3>
+                <h4 className="col-md-auto">${item.price}</h4>
+                <h4 className="col-md-auto">{item.created_at}</h4>
+               </div>
               </div>
             </div>
           ))}

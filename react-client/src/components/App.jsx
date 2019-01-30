@@ -11,7 +11,7 @@ const App = () => (
     <div>
       <Switch>
         <Route exact path="/login" component={Login} />
-        <ProtectedRoute exact path="/products" component={List} />
+        <ProtectedRoute path="/products" component={List} />
         <Route component={FourOhFour} />
       </Switch>
     </div>

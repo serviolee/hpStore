@@ -52,13 +52,15 @@ class Login extends React.Component {
     return (
       <div>
         <form className="container">
-        <div className="row justify-content-md-center">
-          <h2 className="col-md-auto loginPadding">Please Log in To Enter the site
-          </h2>
-            <label>Enter your name: 
-            <input type='text' value={this.state.value} onKeyDown={this.handleKeyDown} onChange={this.handleChange}/> 
+          <div className="row justify-content-md-center">
+            <h2 className="col-md-auto loginPadding">Please Log in To Enter the site
+            </h2>
+          </div>
+          <div className="row justify-content-md-center">
+            <label className="col-md-auto inputPadding">Enter your name: 
+              <input type='text' value={this.state.value} onKeyDown={this.handleKeyDown} onChange={this.handleChange}/> 
             </label>   
-        </div>
+          </div>
         </form> 
         <ProtectedRoute isLoggedIn={this.state.isLoggedIn} />
       </div>
