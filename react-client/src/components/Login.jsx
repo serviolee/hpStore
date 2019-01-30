@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route, Redirect } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute.jsx';
 import List from './List.jsx';
+import "../custom.scss";
 
 class Login extends React.Component {
   constructor(props) {
@@ -50,11 +51,14 @@ class Login extends React.Component {
   render () {
     return (
       <div>
-        <form className="form">
-          <h2>Please Log in To Enter the site</h2>
+        <form className="container">
+        <div className="row justify-content-md-center">
+          <h2 className="col-md-auto loginPadding">Please Log in To Enter the site
+          </h2>
             <label>Enter your name: 
-             <input type='text' value={this.state.value} onKeyDown={this.handleKeyDown} onChange={this.handleChange}/> 
+            <input type='text' value={this.state.value} onKeyDown={this.handleKeyDown} onChange={this.handleChange}/> 
             </label>   
+        </div>
         </form> 
         <ProtectedRoute isLoggedIn={this.state.isLoggedIn} />
       </div>

@@ -8,7 +8,7 @@ const FourOhFour = () => <h1>404</h1>
 
 const App = () => (
   <BrowserRouter>
-    <div className="app">
+    <div>
       <Switch>
         <Route exact path="/login" component={Login} />
         <ProtectedRoute exact path="/products" component={List} />

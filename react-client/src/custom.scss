@@ -2,8 +2,22 @@
 
 .container {
   border: solid;
+  border: 1px solid black;
+  margin-top: 20%;
 }
 
 .row {
   border: solid;
+}
+
+.col {
+  border: solid blue;
+}
+
+.loginPading {
+  pading: 5%;
+}
+
+.inputPadding {
+  padding-bottom: 5%;
 }
