@@ -1,31 +1,59 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/test')
 
-var db = mongoose.connection;
+let db = mongoose.connection;
 
 db.on('error', function() {
   console.log('mongoose connection error');
 });
 
-db.once('open', function() {
-  console.log('mongoose connected successfully');
-});
+db.once('open', () => console.log('mongoose connected successfully!'));
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
-});
+const user = mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  }
+}, {timestamps: true});
 
-var Item = mongoose.model('Item', itemSchema);
+const User = mongoose.model('user', user);
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+
+
+const getAll = (cb) => {
+  User.find({}).exec((err, users) => {
     if(err) {
-      callback(err, null);
+      return console.log('mongo getAll error: ', err);
     } else {
-      callback(null, items);
+      cb(null, users);
     }
   });
 };
 
-module.exports.selectAll = selectAll;
+const getLast = (cb) => {
+  User.findOne().sort('created_at').exec((err, user) => {
+    if(err) {
+      return console.log('mongo getLast error: ', err);
+    } else {
+      cb(null, user);
+    }
+  });
+};
+
+const add = (name, cb) => {
+  console.log('mongo: ', name)
+  User.create(name, (err, user) => {
+    if(err) {
+      return console.log('mongo add error: ', err);
+    } else {
+      cb(null, user);
+    }
+  });
+};
+
+
+module.exports = {
+  add,
+  getAll,
+  getLast
+};

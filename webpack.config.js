@@ -1,6 +1,6 @@
-var path = require('path');
-var SRC_DIR = path.join(__dirname, '/react-client/src');
-var DIST_DIR = path.join(__dirname, '/react-client/dist');
+const path = require('path');
+const SRC_DIR = path.join(__dirname, '/react-client/src');
+const DIST_DIR = path.join(__dirname, '/react-client/dist');
 
 module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
@@ -19,5 +19,5 @@ module.exports = {
        }
       }
     ]
-  }
+  },
 };

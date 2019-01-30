@@ -1,29 +1,51 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var items = require('../database-mysql');
-// var items = require('../database-mongo');
+const express = require('express');
+const bodyParser = require('body-parser');
+const db = require('../database-mongo');
+const history = require('connect-history-api-fallback');
+const app = express();
 
-var app = express();
+app.use(history());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(__dirname + '/../react-client/dist'));
 
-// UNCOMMENT FOR REACT
-// app.use(express.static(__dirname + '/../react-client/dist'));
-
-// UNCOMMENT FOR ANGULAR
-// app.use(express.static(__dirname + '/../angular-client'));
-// app.use(express.static(__dirname + '/../node_modules'));
-
-app.get('/items', function (req, res) {
-  items.selectAll(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
+app.get('/users', (req, res) => {
+  db.getAll((err, users) => {
+    if (err) {
+      console.log('Server side error in query to get all users', err);
+      res.status(500).send(err);
     } else {
-      res.json(data);
+      res.json(users);
     }
   });
 });
 
+app.get('/users/last', (req, res) => {
+  db.getLast((err, user) => {
+    if (err) {
+      console.log('Server side error in query to get last user', err);
+      res.status(500).send(err);
+    } else {
+      res.json(user);
+    }
+  });
+});
+
+
+app.post('/users', (req, res) => {
+  // console.log('server: ', req.body);
+  const name = req.body;
+  db.add(name, (err, user) => {
+    if (err) {
+      console.log('Server side error in query to add to users collection', err);
+      res.status(500).send(err);
+    } else {
+      res.json(user);
+    }
+  });
+});
+
+
 app.listen(3000, function() {
   console.log('listening on port 3000!');
 });
-
