@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import preload from '../../../test_data.json';
-import Detail from './Detail.jsx';
 import ListItem from './ListItem.jsx';
 
 {/*<pre><code>{JSON.stringify(preload, null, 4)}</code></pre> */}

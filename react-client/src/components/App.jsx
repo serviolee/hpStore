@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './Login.jsx';
 import List from './List.jsx';
-import AppWrapper from './AppWrapper.jsx';
+import ProtectedRoute from './ProtectedRoute.jsx';
 
 const FourOhFour = () => <h1>404</h1>
 
@@ -11,8 +11,7 @@ const App = () => (
     <div className="app">
       <Switch>
         <Route exact path="/login" component={Login} />
-        <Route exact path="/" component={AppWrapper} />
-        <Route exact path="/products" component={List} />
+        <ProtectedRoute exact path="/products" component={List} />
         <Route component={FourOhFour} />
       </Switch>
     </div>

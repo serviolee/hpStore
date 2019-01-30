@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route, Redirect } from 'react-router-dom';
-import AppWrapper from './AppWrapper.jsx';
+import ProtectedRoute from './ProtectedRoute.jsx';
 import List from './List.jsx';
 
 class Login extends React.Component {
@@ -56,7 +56,7 @@ class Login extends React.Component {
              <input type='text' value={this.state.value} onKeyDown={this.handleKeyDown} onChange={this.handleChange}/> 
             </label>   
         </form> 
-        <AppWrapper isLoggedIn={this.state.isLoggedIn} />
+        <ProtectedRoute isLoggedIn={this.state.isLoggedIn} />
       </div>
     )
   }
