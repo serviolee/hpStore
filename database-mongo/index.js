@@ -31,7 +31,7 @@ const getAll = (cb) => {
 };
 
 const getLast = (cb) => {
-  User.findOne().sort('created_at').exec((err, user) => {
+  User.findOne().sort('-created_at').exec((err, user) => {
     if(err) {
       return console.log('mongo getLast error: ', err);
     } else {

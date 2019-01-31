@@ -36,10 +36,9 @@ class List extends React.Component {
     }
     fetch('/users/last', options)
       .then(res => res.json())
-      .then(data => console.log(data))
       .then(data => {
         this.setState({
-          userName: data.name  // showing data is undefined
+          userName: data.name 
         })
       })
       .catch(err => console.log('error: ', err))
@@ -74,7 +73,7 @@ class List extends React.Component {
       <div>
         {/*<Navbar />*/}
         <nav>
-          <h1>Welcome {this.state.userName}</h1>
+          <h1>Welcome {this.state.userName}!</h1>
             <label>Sort by
               <select onChange={this.handleSort}>
                 <option> 
