@@ -23,7 +23,7 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    this.getLastUser()
+    this.getLastUser();
   }
 
   getLastUser(){
@@ -34,13 +34,12 @@ class List extends React.Component {
         'Content-Type': 'application/json'
       }
     }
-    fetch('/users/last', options)
+    fetch('/users/last', options) // asks for the last user from db
       .then(res => res.json())
-      .then(data => {
-        this.setState({
-          userName: data.name 
-        })
-      })
+      // .then(data => console.log(data))
+      .then(data => this.setState({
+        userName: data.name
+      }))
       .catch(err => console.log('error: ', err))
   }
   
@@ -59,12 +58,13 @@ class List extends React.Component {
     }
     fetch('/users', options)
       .then(res => res.json())
-      .then(data => console.log(data))
-      .then(data => {
-        this.setState({
-          users: data
-        })
+      // .then(data => console.log(data))
+      .then(function(data) {
+        let arr = [];
+        data.forEach(item => arr.push(' ' + item.name.substring(0,1).toUpperCase() + item.name.substring(1).toLowerCase()))
+        alert(arr);
       })
+      // .then(alert(this.state.users))
       .catch(err => console.log('error: ', err))
   }
 
