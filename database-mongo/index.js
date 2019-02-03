@@ -31,7 +31,7 @@ const getAll = (cb) => {
 };
 
 const getLast = (cb) => {
-  User.findOne({}, { array_field: { $slice: -1 }}).exec((err, user) => { // need latest entry but gives oldest entry
+  User.findOne({}).sort({ _id: -1 }).exec((err, user) => {
     if(err) {
       return console.log('mongo getLast error: ', err);
     } else {
@@ -39,6 +39,8 @@ const getLast = (cb) => {
     }
   });
 };
+
+// ({}, { array_field: { $slice: -1 }})
 
 const add = (name, cb) => {
   console.log('mongo: ', name)

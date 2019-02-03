@@ -4,7 +4,7 @@ import Login from './Login.jsx';
 import List from './List.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
 
-const FourOhFour = () => <h1>404</h1>
+const FourOhFour = () => <h3>404</h3>
 
 const App = () => (
   <BrowserRouter>

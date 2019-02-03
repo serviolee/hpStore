@@ -38,7 +38,7 @@ class List extends React.Component {
       .then(res => res.json())
       // .then(data => console.log(data))
       .then(data => this.setState({
-        userName: data.name
+        userName: data.name.substring(0,1).toUpperCase() + data.name.substring(1).toLowerCase()
       }))
       .catch(err => console.log('error: ', err))
   }
@@ -54,6 +54,7 @@ class List extends React.Component {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, "/"',
+        'Content-Type': 'application/json'
       }
     }
     fetch('/users', options)
@@ -95,7 +96,7 @@ class List extends React.Component {
             <div key={item.product_id} className="container">
               <div className="row justify-content-center loginPadding">
               <Link to={`/products/${item.product_id}`}>
-                <img alt={`${item.title}`} src={item.media[0].sizes[0].url} width="100"/>
+                <img alt={`${item.title}`} src={item.media[0].sizes[0].url} style={{maxWidth: 300}} />
               </Link>
               <div>
                 <h3 className="col-md-auto">{item.title}</h3>
