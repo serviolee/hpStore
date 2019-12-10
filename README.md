@@ -1,5 +1,7 @@
 # hpStore
 
+A store landing page with login form (no validation)
+
 ## Getting Started
 
 ```
